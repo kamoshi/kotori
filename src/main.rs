@@ -4,6 +4,7 @@ use std::env;
 
 use serenity::async_trait;
 use serenity::model::gateway::Ready;
+use serenity::model::prelude::Message;
 use serenity::prelude::*;
 
 
@@ -16,17 +17,17 @@ impl EventHandler for Handler {
     //
     // Event handlers are dispatched through a threadpool, and so multiple
     // events can be dispatched simultaneously.
-    // async fn message(&self, ctx: Context, msg: Message) {
-    //     if msg.content == "!ping" {
-    //         // Sending a message can fail, due to a network error, an
-    //         // authentication error, or lack of permissions to post in the
-    //         // channel, so log to stdout when some error happens, with a
-    //         // description of it.
-    //         if let Err(why) = msg.channel_id.say(&ctx.http, "Pong!").await {
-    //             println!("Error sending message: {:?}", why);
-    //         }
-    //     }
-    // }
+    async fn message(&self, ctx: Context, msg: Message) {
+        if msg.content == "!ping" {
+            // Sending a message can fail, due to a network error, an
+            // authentication error, or lack of permissions to post in the
+            // channel, so log to stdout when some error happens, with a
+            // description of it.
+            if let Err(why) = msg.channel_id.say(&ctx.http, "Pong!").await {
+                println!("Error sending message: {:?}", why);
+            }
+        }
+    }
 
     // Set a handler to be called on the `ready` event. This is called when a
     // shard is booted, and a READY payload is sent by Discord. This payload
