@@ -23,7 +23,7 @@ async fn papal(http: &Http, channel: &ChannelId, last_sent: &mut u32) {
     let now = chrono::Local::now();
     let (d, h, m) = (now.day(), now.hour(), now.minute());
 
-    if d != *last_sent && h == 15 && m == 50 {
+    if d != *last_sent && h == 16 && m == 00 {
         channel.send_message(&http, |m| m.content("papież"))
             .await
             .expect("TODO: panic message");
