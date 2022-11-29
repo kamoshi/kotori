@@ -8,7 +8,8 @@ use serenity::prelude::Context;
 
 pub fn init(ctx: Context) {
     tokio::spawn(async move {
-        let channel = ChannelId(1047123653847957544);
+        let channel = ChannelId(841002228964786197);
+        //let channel = ChannelId(1047123653847957544);
         let mut last_sent = 0_u32;
         loop {
             thread::sleep(Duration::from_secs(10));
