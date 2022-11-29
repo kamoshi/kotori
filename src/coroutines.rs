@@ -9,7 +9,7 @@ use tokio::time::{sleep, Duration};
 pub fn init(ctx: Context) {
     tokio::spawn(async move {
         let channel = ChannelId(841002228964786197);
-        let channel = ChannelId(1047123653847957544);
+        //let channel = ChannelId(1047123653847957544);
 
         let mut last_sent = 0_u32;
         loop {
@@ -23,7 +23,7 @@ async fn papal(http: &Http, channel: &ChannelId, last_sent: &mut u32) {
     let now = chrono::Local::now();
     let (d, h, m) = (now.day(), now.hour(), now.minute());
 
-    if d != *last_sent && h == 16 && m == 00 {
+    if d != *last_sent && h == 21 && m == 37 {
         channel.send_message(&http, |m| m.content("papież"))
             .await
             .expect("TODO: panic message");
