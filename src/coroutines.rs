@@ -11,6 +11,10 @@ pub fn init(ctx: Context) {
         let channel = ChannelId(841002228964786197);
         let channel = ChannelId(1047123653847957544);
 
+        channel.send_message(&ctx.http, |m| m.content("test"))
+            .await
+            .expect("TODO: panic message");
+
         let mut last_sent = 0_u32;
         loop {
             thread::sleep(Duration::from_secs(10));
